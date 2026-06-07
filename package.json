@@ -1,0 +1,30 @@
+{
+  "name": "playwright-automation-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thamsanqa94/Playwright-Automation-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Thamsanqa94/Playwright-Automation-Portfolio/issues"
+  },
+  "homepage": "https://github.com/Thamsanqa94/Playwright-Automation-Portfolio#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2",
+    "axios": "^1.17.0",
+    "dotenv": "^17.4.2",
+    "faker": "^6.6.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

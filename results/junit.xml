@@ -1,8 +1,11 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="6.764652">
-<testsuite name="ui\login.spec.ts" timestamp="2026-06-07T19:17:29.645Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.711" errors="0">
-<testcase name="Login Page › should login with valid credentials" classname="ui\login.spec.ts" time="2.844">
-</testcase>
-<testcase name="Login Page › should show error with invalid credentials" classname="ui\login.spec.ts" time="1.867">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.5093179999999995">
+<testsuite name="ui\login.spec.ts" timestamp="2026-06-09T16:16:56.244Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.473" errors="0">
+<testcase name="Login Page › should show error with invalid credentials" classname="ui\login.spec.ts" time="3.473">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\ui-login-Login-Page-should-62961-or-with-invalid-credentials-chromium\trace.zip]]
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

@@ -1,26 +1,34 @@
+import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'node:path';
 
-/// <reference types="node" />
-const { defineConfig, devices } = require('@playwright/test');
-const dotenv = require('dotenv');
 dotenv.config();
 
-module.exports = defineConfig({
+/**
+ * @see https://playwright.dev/docs/test-configuration
+ */
+export default defineConfig({
   testDir: './tests',
-  timeout: 30000,
+  /* Run tests in files in parallel */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source code */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  ...(process.env.CI ? { workers: 2 } : {}),
-  reporter: [
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['junit', { outputFile: 'results/junit.xml' }],
-    ['list']
-  ],
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: 'html',
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',
-    headless: true,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    baseURL: 'https://www.saucedemo.com',
+
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
+  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
@@ -31,15 +39,8 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
     {
-      name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'api',
-      testDir: './tests/api',
-      use: {
-        baseURL: process.env.API_BASE_URL || 'https://reqres.in',
-      },
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 });

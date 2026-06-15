@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
+import { LoginPage } from './pages/LoginPage';
 
 const invalidLoginData = [
   { username: '', password: '', error: 'Username is required' },
@@ -9,7 +9,7 @@ const invalidLoginData = [
 ];
 
 for (const { username, password, error } of invalidLoginData) {
-  test(`login fails: "${username}" -> "${error}"`, async ({ page }) => {
+  test(`login fails: "${username}" → "${error}"`, async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
     await loginPage.login(username, password);

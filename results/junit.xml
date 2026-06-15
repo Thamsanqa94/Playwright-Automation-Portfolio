@@ -1,11 +1,53 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.5093179999999995">
-<testsuite name="ui\login.spec.ts" timestamp="2026-06-09T16:16:56.244Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.473" errors="0">
-<testcase name="Login Page › should show error with invalid credentials" classname="ui\login.spec.ts" time="3.473">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="10.82402">
+<testsuite name="ui\shopping.spec.ts" timestamp="2026-06-15T18:35:41.263Z" hostname="chromium" tests="1" failures="1" skipped="0" time="9.063" errors="0">
+<testcase name="add item to cart flow" classname="ui\shopping.spec.ts" time="9.063">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\ui-login-Login-Page-should-62961-or-with-invalid-credentials-chromium\trace.zip]]
+[[ATTACHMENT|..\test-results\ui-shopping-add-item-to-cart-flow-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\test-results\ui-shopping-add-item-to-cart-flow-chromium\video.webm]]
+
+[[ATTACHMENT|..\test-results\ui-shopping-add-item-to-cart-flow-chromium\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [chromium] › ui\shopping.spec.ts:4:5 › add item to cart flow ─────────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-test="product_sort_container"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-test="product_sort_container"]')
+
+
+       at ui\pages\InventoryPage.ts:26
+
+      24 |   async expectLoaded() {
+      25 |     await expect(this.inventoryItems.first()).toBeVisible();
+    > 26 |     await expect(this.sortDropdown).toBeVisible();
+         |                                     ^
+      27 |   }
+      28 |
+      29 |   async addItemToCart(itemName: string) {
+        at InventoryPage.expectLoaded (C:\Program Files\Playwright-Automation-Portfolio\tests\ui\pages\InventoryPage.ts:26:37)
+        at Object.loggedInPage (C:\Program Files\Playwright-Automation-Portfolio\tests\ui\pages\fixtures\index.ts:19:5)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\ui-shopping-add-item-to-cart-flow-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\ui-shopping-add-item-to-cart-flow-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\ui-shopping-add-item-to-cart-flow-chromium\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>

@@ -1,8 +1,0 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="6.764652">
-<testsuite name="ui\login.spec.ts" timestamp="2026-06-07T19:17:29.645Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.711" errors="0">
-<testcase name="Login Page › should login with valid credentials" classname="ui\login.spec.ts" time="2.844">
-</testcase>
-<testcase name="Login Page › should show error with invalid credentials" classname="ui\login.spec.ts" time="1.867">
-</testcase>
-</testsuite>
-</testsuites>

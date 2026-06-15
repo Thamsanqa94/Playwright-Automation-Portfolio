@@ -1,32 +1,23 @@
 import { test as base, expect } from '@playwright/test';
-import { LoginPage } from '../LoginPage.js';
-import { InventoryPage } from '../InventoryPage.js';
+import { InventoryPage } from '../InventoryPage';
 
 type MyFixtures = {
-  loginPage: LoginPage;
-  inventoryPage: InventoryPage;
   loggedInPage: InventoryPage;
 };
 
 export const test = base.extend<MyFixtures>({
-  loginPage: async ({ page }, use: (loginPage: LoginPage) => Promise<void>) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.navigate();
-    await use(loginPage);
-  },
-
-  inventoryPage: async ({ page }, use: (inventoryPage: InventoryPage) => Promise<void>) => {
-    await use(new InventoryPage(page));
-  },
-
-  loggedInPage: async ({ page }, use: (loggedInPage: InventoryPage) => Promise<void>) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.navigate();
-    await loginPage.login(
-      process.env.TEST_USERNAME || 'standard_user',
-      process.env.TEST_PASSWORD || 'secret_sauce'
-    );
-    await use(new InventoryPage(page));
+  loggedInPage: async ({ page }, use) => {
+    // Login first
+    await page.goto('/');
+    await page.fill('[data-test="username"]', 'standard_user');
+    await page.fill('[data-test="password"]', 'secret_sauce');
+    await page.click('[data-test="login-button"]');
+    await page.waitForURL('**/inventory.html');
+    
+    // Now inventory page is loaded
+    const inventoryPage = new InventoryPage(page);
+    await inventoryPage.expectLoaded();
+    await use(inventoryPage);
   },
 });
 

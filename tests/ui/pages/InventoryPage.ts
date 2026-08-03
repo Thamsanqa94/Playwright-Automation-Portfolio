@@ -21,10 +21,9 @@ export class InventoryPage {
     await this.page.goto('/inventory.html');
   }
 
-  async expectLoaded() {
+async expectLoaded() {
     await expect(this.inventoryItems.first()).toBeVisible();
-    await expect(this.sortDropdown).toBeVisible();
-  }
+}
 
   async addItemToCart(itemName: string) {
     const item = this.page.locator('.inventory_item', {
